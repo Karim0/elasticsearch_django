@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/search/" method="get">
+    <input type="text" name="q">
+    {#    {% csrf_token %}#}
+    <button type="submit">Submit</button>
+</form>
+
+{% if apps %}
+    <table style="width: 100%">
+        <td style="font-weight: bold">name</td>
+        <td style="font-weight: bold">title</td>
+        <td style="font-weight: bold">website</td>
+        <td style="font-weight: bold">abstract</td>
+        {% for i in apps %}
+            <tr>
+                <td>{{ i.name }}</td>
+                <td>{{ i.title }}</td>
+                <td>{{ i.website }}</td>
+                <td>{{ i.abstract }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br><br>
+    <table style="width: 100%">
+        <td style="font-weight: bold">name</td>
+        <td style="font-weight: bold">identity</td>
+        {% for i in tags %}
+            <tr>
+                <td>{{ i.name }}</td>
+                <td>{{ i.identity }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+</body>
+</html>
